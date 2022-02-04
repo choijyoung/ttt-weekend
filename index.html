@@ -7,21 +7,39 @@
 	<link rel="stylesheet" href="./css/style.css">
 	<script defer src="./js/app.js"></script>
 	<title>Tic Tac Toe</title>
+	<script defer src="./js/app.js"></script>
+	<link rel="stylesheet" href=".css/style.css">
 </head>
 <body>
 	<h1>Tic-Tac-Toe</h1>
 	<h2 id="message">Message</h2>
 
 	<section class="board">
-		<div id="sq0"></div>
-		<div id="sq1"></div>
-		<div id="sq2"></div>
-		<div id="sq3"></div>
-		<div id="sq4"></div>
-		<div id="sq5"></div>
-		<div id="sq6"></div>
-		<div id="sq7"></div>
-		<div id="sq8"></div>
+		<div class="grid" id="sq0"></div>
+		<div class="grid" id="sq1"></div>
+		<div class="grid" id="sq2"></div>
+		<div class="grid" id="sq3"></div>
+		<div class="grid" id="sq4"></div>
+		<div class="grid" id="sq5"></div>
+		<div class="grid" id="sq6"></div>
+		<div class="grid" id="sq7"></div>
+		<div class="grid" id="sq8"></div>
 	</section>    
+	<div>
+	<button id="start-button" type="button">Start!</button>
+	</div>	
+	<div class="hidden">
+		<button id="reset-button" hidden>Reset</button>
+	</div>
 </body>
 </html>
+
+
+
+
+
+// As a user, I should be able to press a button to start the game.
+// As a user, I should be able to select a tile on the board and place my marker.
+// As a user, I should be able to reset the game, when the game ends.
+// As a user, if there is a winner, the game should end.
+// As a user, I should be able to play with someone else (take turns.)
