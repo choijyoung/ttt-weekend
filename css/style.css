@@ -18,7 +18,7 @@ section.board {
   
 }
 
-div.grid {
+div {
   border: 3px solid black;
   font-size: 8vmin;
   text-align: center;
