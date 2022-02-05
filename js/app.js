@@ -10,7 +10,7 @@ const winningCombo = [
 	[ 2, 4, 6 ]
 ];
 /*---------------------------- Variables (state) ----------------------------*/
-let isWinner, playerTurn, message, brdArr;
+let isWinner, playerTurn, message, brdArr, winCondition, check1, check2, check3;
 
 /*------------------------ Cached Element References ------------------------*/
 const startBtn = document.getElementById('start-button');
@@ -22,7 +22,7 @@ let boardEl = document.querySelector('.board');
 squares.forEach((square) => {
 	square.addEventListener('click', handleClick);
 });
-resetBtn.addEventListener('click', init);
+// startBtn.addEventListener('click', init)
 /*-------------------------------- Functions --------------------------------*/
 init();
 
@@ -50,7 +50,7 @@ function render() {
 	} else if (isWinner === 'T') {
 		msgEl.innerText = `It is a tie!`;
 	} else {
-		msgEl.innerText = `Player ${isWinner === 1 ? 'x' : 'o'} has won!`;
+		msgEl.innerText = `Player ${isWinner === 1 ? 'o' : 'x'} has won!`;
 	}
 }
 
@@ -60,39 +60,33 @@ function handleClick(event) {
 		return;
 	}
 	brdArr[squareIdx] = playerTurn = playerTurn * -1;
+	isWinner = getWinner();
 	render();
-  getWinner()
 }
 
 function getWinner() {
-	if (Math.abs(squares[0] + squares[1] + squares[2] === 3)) {
-		return squares[0];
-	}
-	if (Math.abs(squares[3] + squares[4] + squares[5] === 3)) {
-		return squares[3];
-	}
-	if (Math.abs(squares[6] + squares[7] + squares[8] === 3)) {
-		return squares[6];
-	}
-	if (Math.abs(squares[0] + squares[3] + squares[6] === 3)) {
-		return squares[0];
-	}
-	if (Math.abs(squares[1] + squares[4] + squares[7] === 3)) {
-		return squares[1];
-	}
-	if (Math.abs(squares[2] + squares[5] + squares[8] === 3)) {
-		return squares[2];
-	}
-	if (Math.abs(squares[0] + squares[4] + squares[8] === 3)) {
-		return squares[0];
-	}
-	if (Math.abs(squares[2] + squares[4] + squares[6] === 3)) {
-		return squares[2];
-	}
-	if (brdArr !== null) {
-		return 'T';
-	} else {
+	// for (i = 0; i < winningCombo.length; i++) {
+	// const winCondition = winningCombo[i];
+	//   let check1 = brdArr[winCondition[0]]
+	//   let check2 = brdArr[winCondition[1]]
+	//   let check3 = brdArr[winCondition[2]]
+	// }
+	// if (check1 === check2 && check2 === check3) {
+	//   isWinner = check1;
+	//   return;
+	// }
+	if (Math.abs(brdArr[0] + brdArr[1] + brdArr[2]) === 3) return brdArr[0];
+	if (Math.abs(brdArr[3] + brdArr[4] + brdArr[5]) === 3) return brdArr[3];
+	if (Math.abs(brdArr[6] + brdArr[7] + brdArr[8]) === 3) return brdArr[6];
+	if (Math.abs(brdArr[0] + brdArr[3] + brdArr[6]) === 3) return brdArr[0];
+	if (Math.abs(brdArr[1] + brdArr[4] + brdArr[7]) === 3) return brdArr[1];
+	if (Math.abs(brdArr[2] + brdArr[5] + brdArr[8]) === 3) return brdArr[2];
+	if (Math.abs(brdArr[0] + brdArr[4] + brdArr[8]) === 3) return brdArr[0];
+	if (Math.abs(brdArr[2] + brdArr[4] + brdArr[6]) === 3) return brdArr[2];
+
+	if (brdArr.includes(null)) {
 		return null;
+	} else {
+		return 'T';
 	}
-  render();
 }
