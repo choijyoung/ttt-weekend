@@ -13,7 +13,6 @@ const winningCombo = [
 let isWinner, playerTurn, message, brdArr, winCondition, check1, check2, check3;
 
 /*------------------------ Cached Element References ------------------------*/
-const startBtn = document.getElementById('start-button');
 const resetBtn = document.getElementById('reset-button');
 const msgEl = document.getElementById('message');
 let squares = document.querySelectorAll('.square');
@@ -22,7 +21,7 @@ let boardEl = document.querySelector('.board');
 squares.forEach((square) => {
 	square.addEventListener('click', handleClick);
 });
-// startBtn.addEventListener('click', init)
+resetBtn.addEventListener('click', init)
 /*-------------------------------- Functions --------------------------------*/
 init();
 
