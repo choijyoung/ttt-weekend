@@ -1,9 +1,9 @@
 body {
-    background-color: palegoldenrod;
+    background-color: black;
 	/* Use a system font, if none are available use an available sans-sarif   font */
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	margin: 0;
+	margin: auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,13 +15,26 @@ section.board {
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
-  text-align: center;
-
+  justify-content: center;
 }
 
 div {
-  border: 3px solid black;
+  border: 3px solid palegoldenrod;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+}
+
+#reset-button {
+  margin: 0 auto;
+  cursor: pointer;
+}
+#replay-button {
+  cursor: pointer;
+}
+
+h1, h2 {
+  color: palegoldenrod;
 }

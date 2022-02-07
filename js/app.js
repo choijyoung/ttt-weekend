@@ -17,11 +17,14 @@ const resetBtn = document.getElementById('reset-button');
 const msgEl = document.getElementById('message');
 let squares = document.querySelectorAll('.square');
 let boardEl = document.querySelector('.board');
+let replayBtn = document.getElementById('replay-button')
+let form = document.querySelector('form')
 /*----------------------------- Event Listeners -----------------------------*/
 squares.forEach((square) => {
 	square.addEventListener('click', handleClick);
 });
 resetBtn.addEventListener('click', init)
+replayBtn.addEventListener('click', init)
 /*-------------------------------- Functions --------------------------------*/
 init();
 
@@ -29,6 +32,7 @@ function init() {
 	brdArr = [ null, null, null, null, null, null, null, null, null ];
 	playerTurn = 1;
 	isWinner = null;
+	replayBtn.setAttribute("hidden", true)
 	render();
 }
 
@@ -36,20 +40,23 @@ function render() {
 	brdArr.forEach((cell, idx) => {
 		let boardLetter;
 		if (cell === 1) {
-			boardLetter = 'O';
+			boardLetter = '⭕️';
 		} else if (cell === -1) {
-			boardLetter = 'X';
+			boardLetter = '❌';
 		} else if (cell === null) {
 			boardLetter = ' ';
 		}
 		squares[idx].innerText = boardLetter;
 	});
 	if (!isWinner) {
-		msgEl.innerText = `It is player ${playerTurn === 1 ? 'x' : 'o'}'s turn`;
+		msgEl.innerText = `It is player ${playerTurn === 1 ? '❌' : '⭕️'}'s turn`;
 	} else if (isWinner === 'T') {
 		msgEl.innerText = `It is a tie!`;
+		replayBtn.removeAttribute("hidden")
 	} else {
-		msgEl.innerText = `Player ${isWinner === 1 ? 'o' : 'x'} has won!`;
+		msgEl.innerText = `Player ${isWinner === 1 ? '⭕️' : '❌'} has won!`;
+		replayBtn.removeAttribute("hidden")
+		
 	}
 }
 
